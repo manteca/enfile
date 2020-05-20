@@ -20,13 +20,15 @@ The tool is an abstraction on using openssl to encrypting file using a public an
 * With the private key it will decrypt the file to key.bin
 * The file key.bin will be use t decrypt and store it as <file_name_encrypted>
 
-## How to  Instruction
+## How to Encrypt-Decrypt a file
+
+### Encrypt a file with public-key
 ```
 ./enfile enc <file_to_encrypt> <public_key_to_use>
 ```
-
+### Decrypt a file with private-key
 ```
-./enfile dec <file_to_dencrypt> <public_key_to_use>
+./enfile dec <file_to_dencrypt> <private_key_to_use>
 ```
 
 
