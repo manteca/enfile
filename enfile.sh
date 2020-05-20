@@ -25,7 +25,29 @@ print_terminal(){
   esac
 }
 
+show_help(){
+  cat << HEREDOC
 
+   USAGE:
+      enfile.sh -h | --help
+      enfile.sh -e | --enc FILE PUBLIC_KEY
+      enfile.sh -d | --dec FILE PRIVATE_KEY
+
+   ARGUMENTS:
+     -e, --enc            pass in a number
+     -d, --dec            pass in a time string
+     FILE                 file to be encrypted or decrypted
+     PUBLIC_KEY           public key to use
+     PRIVATE_KEY          private key to use
+     -h, --help           show this panel
+
+
+
+HEREDOC
+  echo
+  echo "Help guide"
+  echo "enfile [-h|--help] | enc|dec <file> <public|private_key>"
+}
 
 encry(){
   print_terminal "Start encrytion of file $1"
@@ -78,13 +100,18 @@ file_input=$2
 pub_or_private=$3
 
 case "$option" in
-  enc)
+  -h|--help)
+    show_help
+    ;;
+  -e|--enc)
     encry $file_input $pub_or_private
     ;;
-  dec)
+  -d|--dec)
     decry $file_input $pub_or_private
     ;;
   *)
-    test_thinngs $file_input $pub_or_private
+    # test_thinngs $file_input $pub_or_private
     echo "Wrong option (set help guide)"
+    echo
+    show_help
 esac
